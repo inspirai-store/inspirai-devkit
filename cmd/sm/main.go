@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/inspirai-store/inspirai-devkit/internal/config"
+	"github.com/inspirai-store/inspirai-devkit/internal/submodule"
 	"github.com/spf13/cobra"
 )
 
@@ -32,8 +34,14 @@ func initCmd() *cobra.Command {
 		Use:   "init",
 		Short: "Initialize all submodules and create symlinks",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Println("sm init: Not implemented yet")
-			return nil
+			root, err := config.GetProjectRoot()
+			if err != nil {
+				return fmt.Errorf("not in a git repository: %w", err)
+			}
+
+			cfg := config.DefaultConfig()
+			fmt.Println("Initializing submodules...")
+			return submodule.Init(cfg, root)
 		},
 	}
 }
