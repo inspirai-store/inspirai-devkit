@@ -49,10 +49,16 @@ func initCmd() *cobra.Command {
 func syncCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "sync",
-		Short: "Sync all submodules (git pull)",
+		Short: "Sync all submodules (git pull --rebase)",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Println("sm sync: Not implemented yet")
-			return nil
+			root, err := config.GetProjectRoot()
+			if err != nil {
+				return fmt.Errorf("not in a git repository: %w", err)
+			}
+
+			cfg := config.DefaultConfig()
+			fmt.Println("Syncing submodules...")
+			return submodule.Sync(cfg, root)
 		},
 	}
 }
