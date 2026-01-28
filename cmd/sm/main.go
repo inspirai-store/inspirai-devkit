@@ -84,8 +84,13 @@ func linksCmd() *cobra.Command {
 		Use:   "links",
 		Short: "Rebuild all symlinks",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Println("sm links: Not implemented yet")
-			return nil
+			root, err := config.GetProjectRoot()
+			if err != nil {
+				return fmt.Errorf("not in a git repository: %w", err)
+			}
+
+			cfg := config.DefaultConfig()
+			return submodule.CreateLinks(cfg, root)
 		},
 	}
 }
