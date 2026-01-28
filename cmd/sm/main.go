@@ -62,8 +62,13 @@ func statusCmd() *cobra.Command {
 		Use:   "status",
 		Short: "Show status of all submodules",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Println("sm status: Not implemented yet")
-			return nil
+			root, err := config.GetProjectRoot()
+			if err != nil {
+				return fmt.Errorf("not in a git repository: %w", err)
+			}
+
+			cfg := config.DefaultConfig()
+			return submodule.Status(cfg, root)
 		},
 	}
 }
