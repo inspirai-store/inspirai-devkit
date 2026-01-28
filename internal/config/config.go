@@ -24,12 +24,17 @@ func DefaultConfig() *Config {
 	return &Config{
 		SubmodulesDir: ".submodules",
 		Submodules: []SubmoduleConfig{
+			// lingbo 产品线
 			{Name: "lingbo-desktop", Repo: "git@github.com:inspirai-store/lingbo-desktop.git", Type: "client", Product: "lingbo"},
 			{Name: "lingbo-web", Repo: "git@github.com:inspirai-store/lingbo-web.git", Type: "client", Product: "lingbo"},
+			{Name: "lingbo-plugin", Repo: "git@github.com:inspirai-store/lingbo-plugin.git", Type: "tools", Product: "lingbo"},
+			// inspirai 平台
 			{Name: "inspirai-user", Repo: "git@github.com:inspirai-store/inspirai-user.git", Type: "service", Product: "inspirai"},
 			{Name: "inspirai-admin", Repo: "git@github.com:inspirai-store/inspirai-admin.git", Type: "service", Product: "inspirai"},
+			{Name: "inspirai-web", Repo: "git@github.com:inspirai-store/inspirai-web.git", Type: "client", Product: "inspirai"},
 			{Name: "inspirai-api-specs", Repo: "git@github.com:inspirai-store/inspirai-api-specs.git", Type: "specs", Product: "inspirai"},
 			{Name: "inspirai-devkit", Repo: "git@github.com:inspirai-store/inspirai-devkit.git", Type: "tools", Product: "inspirai"},
+			// 独立项目
 			{Name: "skill-market", Repo: "git@github.com:inspirai-store/skill-market.git", Type: "tools", Product: "independent"},
 		},
 	}
