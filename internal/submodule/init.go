@@ -19,6 +19,9 @@ func Init(cfg *config.Config, root string) error {
 		return fmt.Errorf("failed to create submodules dir: %w", err)
 	}
 
+	// 读取 git clone 方式
+	gitMethod := config.GetGitCloneMethod(root)
+
 	// 克隆每个 submodule
 	for _, sm := range cfg.Submodules {
 		smPath := filepath.Join(submodulesDir, sm.Name)
@@ -27,8 +30,9 @@ func Init(cfg *config.Config, root string) error {
 			continue
 		}
 
+		repoURL := config.ConvertRepoURL(sm.Repo, gitMethod)
 		color.Cyan("  [clone] %s", sm.Name)
-		cmd := exec.Command("git", "clone", sm.Repo, smPath)
+		cmd := exec.Command("git", "clone", repoURL, smPath)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		if err := cmd.Run(); err != nil {

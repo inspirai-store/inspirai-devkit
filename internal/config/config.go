@@ -1,8 +1,10 @@
 package config
 
 import (
+	"bufio"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 // SubmoduleConfig 定义单个 submodule 的配置
@@ -57,4 +59,37 @@ func GetProjectRoot() (string, error) {
 		}
 		dir = parent
 	}
+}
+
+// GetGitCloneMethod 读取 .bootstrap.conf 获取 git clone 方式
+func GetGitCloneMethod(root string) string {
+	configPath := filepath.Join(root, ".bootstrap.conf")
+	file, err := os.Open(configPath)
+	if err != nil {
+		return "ssh" // 默认 SSH
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		// 移除可能的 UTF-8 BOM
+		line = strings.TrimPrefix(line, "\ufeff")
+		if strings.HasPrefix(line, "GIT_CLONE_METHOD=") {
+			return strings.TrimPrefix(line, "GIT_CLONE_METHOD=")
+		}
+	}
+	return "ssh"
+}
+
+// ConvertRepoURL 根据配置转换 repo URL
+func ConvertRepoURL(repo, method string) string {
+	if method != "https" {
+		return repo
+	}
+	// git@github.com:org/repo.git -> https://github.com/org/repo.git
+	if strings.HasPrefix(repo, "git@github.com:") {
+		return "https://github.com/" + strings.TrimPrefix(repo, "git@github.com:")
+	}
+	return repo
 }
