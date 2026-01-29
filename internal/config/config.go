@@ -32,12 +32,15 @@ func DefaultConfig() *Config {
 			{Name: "lingbo-plugin", Repo: "git@github.com:inspirai-store/lingbo-plugin.git", Type: "tools", Product: "lingbo"},
 			// inspirai 平台
 			{Name: "inspirai-user", Repo: "git@github.com:inspirai-store/inspirai-user.git", Type: "service", Product: "inspirai"},
-			{Name: "inspirai-admin", Repo: "git@github.com:inspirai-store/inspirai-admin.git", Type: "service", Product: "inspirai"},
+			{Name: "inspirai-ai-gateway", Repo: "git@github.com:inspirai-store/inspirai-ai-gateway.git", Type: "service", Product: "inspirai"},
+			{Name: "inspirai-admin", Repo: "git@github.com:inspirai-store/inspirai-admin.git", Type: "client", Product: "inspirai"},
 			{Name: "inspirai-web", Repo: "git@github.com:inspirai-store/inspirai-web.git", Type: "client", Product: "inspirai"},
 			{Name: "inspirai-api-specs", Repo: "git@github.com:inspirai-store/inspirai-api-specs.git", Type: "specs", Product: "inspirai"},
 			{Name: "inspirai-devkit", Repo: "git@github.com:inspirai-store/inspirai-devkit.git", Type: "tools", Product: "inspirai"},
 			// magicbook 产品线
-			{Name: "magicbook-web", Repo: "git@github.com:inspirai-store/magicbook-web.git", Type: "client", Product: "magicbook"},
+			{Name: "magicbook-service", Repo: "git@github.com:inspirai-store/magicbook-service.git", Type: "service", Product: "magicbook"},
+			{Name: "magicbook-h5", Repo: "git@github.com:inspirai-store/magicbook-h5.git", Type: "client", Product: "magicbook"},
+			{Name: "magicbook-admin", Repo: "git@github.com:inspirai-store/magicbook-admin.git", Type: "client", Product: "magicbook"},
 			// zenix 产品线
 			{Name: "zeni-x-desktop", Repo: "git@github.com:inspirai-store/zeni-x-desktop.git", Type: "tools", Product: "zenix"},
 			// 独立项目
