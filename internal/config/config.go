@@ -43,6 +43,12 @@ func DefaultConfig() *Config {
 			{Name: "magicbook-admin", Repo: "git@github.com:inspirai-store/magicbook-admin.git", Type: "client", Product: "magicbook"},
 			// zenix 产品线
 			{Name: "zeni-x-desktop", Repo: "git@github.com:inspirai-store/zeni-x-desktop.git", Type: "tools", Product: "zenix"},
+			// insprcode 产品线
+			{Name: "insprcode", Repo: "git@github.com:inspirai-store/insprcode.git", Type: "tools", Product: "insprcode"},
+			{Name: "insprcode-hub", Repo: "git@github.com:inspirai-store/insprcode-hub.git", Type: "service", Product: "insprcode"},
+			{Name: "insprcode-agent", Repo: "git@github.com:inspirai-store/insprcode-agent.git", Type: "tools", Product: "insprcode"},
+			{Name: "insprcode-spec", Repo: "git@github.com:inspirai-store/insprcode-spec.git", Type: "specs", Product: "insprcode"},
+			{Name: "insprcode-web", Repo: "git@github.com:inspirai-store/insprcode-web.git", Type: "client", Product: "insprcode"},
 			// 独立项目
 			{Name: "skill-market", Repo: "git@github.com:inspirai-store/skill-market.git", Type: "tools", Product: "independent"},
 		},
