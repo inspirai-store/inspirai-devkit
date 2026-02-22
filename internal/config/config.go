@@ -47,6 +47,8 @@ func DefaultConfig() *Config {
 			{Name: "insprcode-agent", Repo: "git@github.com:inspirai-store/insprcode-agent.git", Type: "tools", Product: "insprcode"},
 			{Name: "insprcode-spec", Repo: "git@github.com:inspirai-store/insprcode-spec.git", Type: "specs", Product: "insprcode"},
 			{Name: "insprcode-web", Repo: "git@github.com:inspirai-store/insprcode-web.git", Type: "client", Product: "insprcode"},
+			// zenix 产品线
+			{Name: "zenix-desktop", Repo: "git@github.com:inspirai-store/zenix-desktop.git", Type: "client", Product: "zenix"},
 			// 独立项目
 			{Name: "skill-market", Repo: "git@github.com:inspirai-store/skill-market.git", Type: "tools", Product: "independent"},
 			{Name: "infradesk", Repo: "git@github.com:inspirai-store/infradesk.git", Type: "tools", Product: "independent"},
